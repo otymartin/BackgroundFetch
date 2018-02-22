@@ -31,13 +31,16 @@ class ViewController: UIViewController {
         let content = UNMutableNotificationContent()
         content.title = "Views"
         content.badge = 1
+        content.sound = UNNotificationSound.default()
         content.body = "You have been viewed 5 times by people around you!"
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
         
         let request = UNNotificationRequest(identifier: "fire", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request) { (error) in
-            print(error?.localizedDescription ?? "No Error")
+            DispatchQueue.main.async {
+                self.label.text = "Brand New Data 💎"
+            }
         }
     }
 

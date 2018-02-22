@@ -15,12 +15,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        UIApplication.shared.setMinimumBackgroundFetchInterval(10)
+        
         return true
     }
 
+    func application(_ application: UIApplication, performFetchWithCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        if let vc = self.window?.rootViewController as? ViewController {
+            vc.tap()
+            completionHandler(.newData)
+        }
+    }
     
-
-
 }
 

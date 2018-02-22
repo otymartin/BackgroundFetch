@@ -10,9 +10,16 @@ import UIKit
 import UserNotifications
 
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var label: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.label.text = "No Data"
+        self.label.font = UIFont.systemFont(ofSize: 30, weight: .heavy)
+        self.label.textColor = .black
+        self.label.textAlignment = .center
+        self.view.addSubview(self.label)
         
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { (granted, error) in }
         
@@ -30,7 +37,7 @@ class ViewController: UIViewController {
         
         let request = UNNotificationRequest(identifier: "fire", content: content, trigger: trigger)
         UNUserNotificationCenter.current().add(request) { (error) in
-            print(error?.localizedDescription)
+            print(error?.localizedDescription ?? "No Error")
         }
     }
 

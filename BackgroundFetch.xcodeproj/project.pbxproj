@@ -194,6 +194,11 @@
 					A1C01E04203E5768007B5857 = {
 						CreatedOnToolsVersion = 9.2;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 1;
+							};
+						};
 					};
 					A1C01E18203E5768007B5857 = {
 						CreatedOnToolsVersion = 9.2;
